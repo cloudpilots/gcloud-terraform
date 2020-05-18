@@ -18,4 +18,4 @@ RUN \
   rm -rf tf.zip && \
   terraform version
 
-ENTRYPOINT [ "/usr/local/bin/terraform" ]
+CMD [ "/usr/local/bin/terraform" ]
