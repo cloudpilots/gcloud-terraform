@@ -1,6 +1,6 @@
 FROM google/cloud-sdk:slim
 
-ARG TF_VERSION=0.13.5
+ARG TF_VERSION=1.0.6
 ENV TF_VERSION=${TF_VERSION}
 # ENV DEBIAN_FRONTEND noninteractive
 
