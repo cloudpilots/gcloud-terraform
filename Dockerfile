@@ -1,15 +1,10 @@
-FROM google/cloud-sdk:slim
+FROM google/cloud-sdk:alpine
 
 ARG TF_VERSION=0.14.4
 ENV TF_VERSION=${TF_VERSION}
-# ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
-  apt-get update && \
-  apt-get -y install kubectl wget curl unzip && \
-  rm -rf /var/lib/apt/lists/*
-
-RUN \
+  mkdir -p /usr/local/src && \
   cd /usr/local/src && \
   wget -q https://releases.hashicorp.com/terraform/$TF_VERSION/terraform_${TF_VERSION}_linux_amd64.zip -O tf.zip && \
   unzip tf.zip && \
