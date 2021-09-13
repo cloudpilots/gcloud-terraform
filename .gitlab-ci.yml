@@ -8,9 +8,9 @@ image:
 
 .build_image:
   script:
-    - - mkdir -p /kaniko/.docker
+    - mkdir -p /kaniko/.docker
     - |
-      echo > /kaniko/.docker/config.json <<EOF
+      cat > /kaniko/.docker/config.json <<EOF
       {
         "auths": {
           "https://index.docker.io/v1/": {
