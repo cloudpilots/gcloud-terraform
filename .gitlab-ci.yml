@@ -23,12 +23,13 @@ image:
       /kaniko/executor
       --dockerfile "Dockerfile"
       --context "."
-      --destination $IMAGE_NAME:$IMAGE_TAG
+      ${DESTINATION}
 
 build_master:
   extends: .build_image
   variables:
     IMAGE_TAG: latest
+    DESTINATION: "--destination $IMAGE_NAME:$IMAGE_TAG"
   only:
     - master
 
@@ -36,5 +37,16 @@ build_tag:
   extends: .build_image
   variables:
     IMAGE_TAGE: $CI_COMMIT_TAG
+    DESTINATION: "--destination $IMAGE_NAME:$IMAGE_TAG"
   only:
     - tags
+
+build_branch:
+  extends: .build_image
+  variables:
+    IMAGE_TAG: $CI_COMMIT_BRANCH
+    DESTINATION: "--no-push"
+  only:
+    - branches
+  except:
+    - master
