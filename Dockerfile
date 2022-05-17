@@ -1,6 +1,6 @@
 FROM google/cloud-sdk:alpine
 
-ARG TF_VERSION=1.0.6
+ARG TF_VERSION=1.1.9
 ENV TF_VERSION=${TF_VERSION}
 
 RUN \
